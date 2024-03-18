@@ -1,0 +1,16 @@
+@import "../../../../src/styles/variables";
+
+
+.header {
+  background: $color-gray-opacity;
+  padding: 20px 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="header__container container">
+    <a routerLink="/" class="fs-2xl fw-bold">HeadHunter</a>
+
+    <nav class="header__menu">
+      <ul>
+        <li *ngFor="let link of headerLinks">
+          <a [routerLink]="link.link" class="fs-md">{{ link.name }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

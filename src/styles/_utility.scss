@@ -1,0 +1,57 @@
+@import "variables";
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@each $size, $value in (6xl: $fs-6xl, 5xl: $fs-5xl, 4xl: $fs-4xl, 3xl: $fs-3xl, 2xl: $fs-2xl, xl: $fs-xl, lg: $fs-lg, md: $fs-md, sm: $fs-sm, xs: $fs-xs) {
+  .fs-#{$size} {
+    font-size: $value;
+  }
+}
+
+@each $size, $value in (regular: $fw-regular, bold: $fw-bold) {
+  .fw-#{$size} {
+    font-weight: $value;
+  }
+}
+
+
+@mixin inputGroupStyles {
+  max-width: 400px;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 4px 1px #00000040;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+@mixin inputStyles {
+  font-size: $fs-md;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: $color-gray;
+  }
+}
+
+.input {
+  @include inputGroupStyles;
+  @include inputStyles;
+}
+
+.input-group {
+  @include inputGroupStyles;
+
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 5px;
+
+  input {
+    @include inputStyles;
+    width: 100%;
+  }
+}
