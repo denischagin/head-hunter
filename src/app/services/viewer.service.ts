@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {Viewer} from "../types/viewer";
 import {AuthResponse} from "../types/auth";
 import {TokenService} from "./token.service";
@@ -8,7 +8,7 @@ import {TokenService} from "./token.service";
   providedIn: 'root'
 })
 export class ViewerService {
-  viewer = new Subject<Viewer>();
+  viewer = new BehaviorSubject<Viewer | null>(null);
 
   constructor(
     private tokenService: TokenService
@@ -18,5 +18,10 @@ export class ViewerService {
   public authenticate(authResponse: AuthResponse) {
     this.tokenService.setToken(authResponse.accessToken.accessToken);
     this.viewer.next({...authResponse, isAuthenticated: true});
+  }
+
+  public logout() {
+    this.tokenService.removeToken();
+    this.viewer.next(null);
   }
 }

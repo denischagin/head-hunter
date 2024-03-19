@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthResponse, LoginCredentials, RefreshCredentials} from "../types/auth";
 import {ViewerService} from "./viewer.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,9 @@ export class AuthService {
       )
   }
 
-  public refresh(credentials: RefreshCredentials): void {
-    this.http
+  public refresh(credentials: RefreshCredentials): Observable<AuthResponse> {
+    return this.http
       .post<AuthResponse>('refresh', credentials)
-      .subscribe(response =>
-        this.viewerService.authenticate(response)
-      )
   }
 
 }

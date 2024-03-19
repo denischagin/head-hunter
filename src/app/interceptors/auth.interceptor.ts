@@ -1,12 +1,20 @@
 import {HttpErrorResponse, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {catchError, throwError} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {TokenService} from "../services/token.service";
+import {AuthService} from "../services/auth.service";
+import {ViewerService} from "../services/viewer.service";
 
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private tokenService: TokenService) {
+  private isRefreshing = false;
+
+  constructor(
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private viewerService: ViewerService,
+  ) {
   }
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     const accessToken = this.tokenService.getToken()
 
     if (!accessToken) {
@@ -21,15 +29,32 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(authReq)
       .pipe(
-        catchError(this.handleError.bind(this))
+        catchError((error) => this.handleError(req, error, next))
       );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 401) {
-      this.tokenService.removeToken();
-    }
+  private handleError(request: HttpRequest<unknown>, error: HttpErrorResponse, next: HttpHandler) {
+    const refreshToken = this.viewerService.viewer.value?.refreshToken.refreshToken
 
+    if (error.status === 401) {
+      if (!this.isRefreshing && !!refreshToken) {
+        this.isRefreshing = true;
+
+        this.authService.refresh({refreshToken})
+          .subscribe({
+            next: () => {
+              this.isRefreshing = false;
+              next.handle(request);
+              return throwError(() => new Error(error.message))
+            },
+            error: () => {
+              this.isRefreshing = false;
+              this.viewerService.logout()
+              return throwError(() => new Error(error.message))
+            }
+          })
+      }
+    }
     return throwError(() => new Error(error.message))
   }
 }
