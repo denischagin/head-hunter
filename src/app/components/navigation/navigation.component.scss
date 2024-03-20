@@ -16,35 +16,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
   padding-top: 10px;
 
   &__tabs {
     display: flex;
-  }
-
-  &__tab + &__tab {
-    margin-left: 49px;
+    gap: 45px;
   }
 
   &__tab {
     position: relative;
 
-    &:after {
+    &.navigation__tab--active::before {
+      width: 100%
+    }
+
+    &::after {
       @include underline;
       background: $color-gray-opacity;
       width: 100%;
     }
 
 
-    &:before {
+    &::before {
       @include underline;
       background: $color-black;
       width: 0;
     }
 
     &:hover {
-      &:before {
+      &::before {
         width: 100%;
       }
     }

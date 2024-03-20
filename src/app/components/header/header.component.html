@@ -1,11 +1,15 @@
 <header class="header">
   <div class="header__container container">
-    <a routerLink="/" class="fs-2xl fw-bold">HeadHunter</a>
+    <a routerLink="/" class="fs-xl fw-bold clr-gray-800">HeadHunter</a>
 
     <nav class="header__menu">
       <ul>
-        <li *ngFor="let link of headerLinks">
-          <a [routerLink]="link.link" class="fs-md">{{ link.name }}</a>
+        <li>
+          <a routerLink="/login" class="btn btn--outline--blue btn--size--sm">Войти</a>
+        </li>
+
+        <li>
+          <a routerLink="/register" class="btn btn--outline--blue btn--size--sm">Зарегистрироваться</a>
         </li>
       </ul>
     </nav>

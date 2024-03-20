@@ -1,15 +1,16 @@
 <nav class="navigation container">
   <ul class="navigation__tabs">
-    <li class="navigation__tab">
-      <a routerLink="vacancies">Вакансии</a>
-    </li>
-
-    <li class="navigation__tab">
-      <a routerLink="vacancies">Резюме</a>
-    </li>
-
-    <li class="navigation__tab">
-      <a routerLink="vacancies">Компании</a>
+    <li
+      *ngFor="let route of routes"
+    >
+      <a
+        class="navigation__tab"
+        [routerLink]="route.link"
+        routerLinkActive="navigation__tab--active"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        {{ route.title }}
+      </a>
     </li>
   </ul>
 

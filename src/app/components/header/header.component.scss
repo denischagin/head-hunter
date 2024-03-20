@@ -2,8 +2,9 @@
 
 
 .header {
-  background: $color-gray-opacity;
+  //background: $color-gray-opacity;
   padding: 20px 0;
+  box-shadow: $shadow-md;
 
   &__container {
     display: flex;
@@ -12,5 +13,11 @@
 
   &__menu {
     margin-left: auto;
+
+  }
+
+  ul {
+    display: flex;
+    gap: 5px;
   }
 }

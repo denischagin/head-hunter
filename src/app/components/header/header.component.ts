@@ -13,10 +13,4 @@ import {NgForOf} from "@angular/common";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  headerLinks = [
-    {
-      name: 'Войти',
-      link: '/login',
-    }
-  ]
 }
