@@ -1,28 +1,32 @@
 <div class="vacancy-item">
   <div class="vacancy-item__content">
     <p class="fs-xl">
-      Начинающий специалист
+      {{ vacancy?.title }}
+      <!--      <button class="btn clr-blue-800 fs-2xl">-->
+      <!--       ★☆-->
+      <!--      </button> TODO add favorite-->
     </p>
 
 
     <p class="fs-3xl fw-bold vacancy-item__wage">
-      от 30000
+      <!--      {{ vacancy?.workExperience }}-->
+      от 60 000
     </p>
 
     <p class="fs-lg">
-      Компания
+      {{ vacancy?.hirer?.title }}
     </p>
     <p class="fs-lg">
-      Костромская область, г. Кострома
+      {{ vacancy?.region?.title }}
     </p>
   </div>
 
-  <div class="vacancy-item__buttons clr-blue-800">
-    <p>
-      Избранное
-    </p>
+  <div class="vacancy-item__buttons">
+    <button class="btn btn--outline--blue btn--size--md">
+      Контакты
+    </button>
 
-    <button class="btn btn--fill--green btn--size--md">
+    <button class="btn btn--fill--blue btn--size--md">
       Откликнуться
     </button>
   </div>

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Viewer} from "../types/viewer";
-import {AuthResponse} from "../types/auth";
-import {TokenService} from "./token.service";
+import {Viewer} from "../../types/viewer";
+import {AuthResponse} from "../../types/auth";
+import {TokenService} from "../token.service";
 
 @Injectable({
   providedIn: 'root'

@@ -20,9 +20,8 @@
   &__buttons {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    justify-content: space-between;
-    //gap: 50px;
+    justify-content: space-evenly;
+    gap: 7px;
 
     transition: all 300ms;
     opacity: 0;

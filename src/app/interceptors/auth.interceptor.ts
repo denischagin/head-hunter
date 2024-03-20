@@ -1,8 +1,8 @@
 import {HttpErrorResponse, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, throwError} from "rxjs";
 import {TokenService} from "../services/token.service";
-import {AuthService} from "../services/auth.service";
-import {ViewerService} from "../services/viewer.service";
+import {AuthService} from "../services/api/auth.service";
+import {ViewerService} from "../services/store/viewer.service";
 
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;

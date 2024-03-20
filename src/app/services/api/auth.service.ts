@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AuthResponse, LoginCredentials, RefreshCredentials} from "../types/auth";
-import {ViewerService} from "./viewer.service";
+import {AuthResponse, LoginCredentials, RefreshCredentials} from "../../types/auth";
+import {ViewerService} from "../store/viewer.service";
 import {Observable} from "rxjs";
 
 @Injectable({

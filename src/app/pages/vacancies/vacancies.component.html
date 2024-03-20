@@ -7,13 +7,16 @@
 <section class="vacancies">
   <div class="container">
     <div class="vacancies__list">
-      <app-vacancy-item/>
-      <app-vacancy-item/>
-      <app-vacancy-item/>
-      <app-vacancy-item/>
-      <app-vacancy-item/>
-      <app-vacancy-item/>
-      <app-vacancy-item/>
+      <ng-container *ngIf="vacancies$.getValue().length; else emptyVacancies">
+        <app-vacancy-item *ngFor="let vacancy of vacancies$ | async" [vacancy]="vacancy"/>
+      </ng-container>
+
+      <ng-template #emptyVacancies>
+        <p class="fs-2xl clr-black">
+          Нет вакансий
+        </p>
+      </ng-template>
     </div>
+
   </div>
 </section>
