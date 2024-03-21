@@ -9,5 +9,5 @@ import {Vacancy} from "../../../types/vacancy";
   styleUrl: './vacancy-item.component.scss'
 })
 export class VacancyItemComponent {
-  @Input() vacancy?: Vacancy;
+  @Input() vacancy: Vacancy;
 }
