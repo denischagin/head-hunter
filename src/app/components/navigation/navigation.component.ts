@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'app-navigation',
@@ -9,12 +9,15 @@ import {NgClass, NgForOf} from "@angular/common";
     RouterLink,
     RouterLinkActive,
     NgClass,
-    NgForOf
+    NgForOf,
+    NgTemplateOutlet
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
+  @Input() panelRef: TemplateRef<unknown>;
+
   routes = [
     {title: 'Вакансии', link: '/vacancies'},
     {title: 'Резюме', link: '/resume'},

@@ -11,7 +11,11 @@ export class LoaderService {
   constructor() {
   }
 
-  changeLoaderStage(stage: string | null) {
+  changeLoaderStage(stage: string) {
     this.loaderStage$.next(stage)
+  }
+
+  hideLoader() {
+    this.loaderStage$.next(null)
   }
 }
