@@ -1,9 +1,9 @@
 import {VacancyListComponent} from './vacancy-list.component';
 import {VacancyService} from "../../../services/api/vacancy.service";
 import {HttpClient} from "@angular/common/http";
-import {LoaderService} from "../../../services/loader.service";
 import {EMPTY, of} from "rxjs";
 import {Vacancy} from "../../../types/vacancy";
+import {LoaderService} from "../../../services/loader.service";
 
 const mockVacancies = [
   {region: {title: "Kostroma"}, title: "Vacancy", hirer: {title: 'Hirer'}}
