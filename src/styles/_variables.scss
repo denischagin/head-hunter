@@ -26,7 +26,15 @@ $color-blue-800: rgb(0, 51, 153);
 $color-blue-600: rgb(51, 117, 230);
 $color-blue-400: rgb(85, 162, 242);
 $color-blue-200: rgb(153, 198, 239);
-$color-blue-200-opacity: rgba(153, 198, 239, 0.22);
+$color-blue-200-opacity: rgba(153, 198, 239, 0.25);
+
+// color-error
+$color-error: #FF0000;
+$color-error-800: rgb(204, 0, 0);
+$color-error-600: rgb(255, 51, 51);
+$color-error-400: rgb(255, 102, 102);
+$color-error-200: rgb(255, 153, 153);
+$color-error-200-opacity: rgba(255, 153, 153, 0.25);
 
 $fw-bold: 800;
 $fw-semibold: 600;

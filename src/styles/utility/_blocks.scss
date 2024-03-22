@@ -19,13 +19,13 @@
   outline: none;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.15);
 
+  &:focus {
+    border-color: $color-gray;
+  }
+
   &--color {
     &--gray {
       background: $color-gray-opacity;
-
-      &:focus {
-        border-color: $color-gray;
-      }
 
       &::placeholder {
         color: $color-gray-800;
@@ -38,6 +38,15 @@
     width: 100%;
     max-width: unset;
   }
+
+  &--error {
+    border-color: $color-error-400;
+
+    &:focus {
+      border-color: $color-error-200;
+    }
+  }
+
 }
 
 

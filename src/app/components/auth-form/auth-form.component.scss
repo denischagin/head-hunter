@@ -13,16 +13,22 @@
     flex-direction: column;
     max-width: 600px;
     width: 100%;
-    gap: 50px;
     padding-top: 60px;
   }
 
   &__inputs {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 15px;
     align-items: center;
+  }
+
+  &__error {
+    display: flex;
+    padding: 10px 0;
+    min-height: 60px;
   }
 
   &__buttons {

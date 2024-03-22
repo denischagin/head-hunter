@@ -8,6 +8,10 @@
       <ng-container [ngTemplateOutlet]="inputs"/>
     </div>
 
+    <div class="auth-form__error">
+      <p *ngIf="error" class="clr-error">{{ error }}</p>
+    </div>
+
     <div class="auth-form__buttons">
       <ng-container [ngTemplateOutlet]="buttonSubmit"/>
     </div>

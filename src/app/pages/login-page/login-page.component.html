@@ -1,19 +1,38 @@
-<form action="" class="login">
+<form action="" class="login" [formGroup]="loginForm" (ngSubmit)="handleLogin($event)">
   <app-auth-form
     formTitle="Авторизоваться"
     [buttonSubmit]="buttonSubmit"
     [inputs]="loginInputs"
+    [error]="loginError"
   />
 
   <ng-template #buttonSubmit>
-    <button class="btn btn--size--md btn--fill">Войти</button>
+    <button class="btn btn--size--md btn--fill" type="submit">Войти</button>
     <a class="clr-blue-600" routerLink="/register">
       Ещё нет аккаунта?
     </a>
   </ng-template>
 
   <ng-template #loginInputs>
-    <input class="input input--fullwidth" type="text" placeholder="Введите логин..."/>
-    <input class="input input--fullwidth" type="text" placeholder="Введите пароль..."/>
+    <input
+      class="input input--fullwidth "
+      [ngClass]="{
+        'input--error': login.invalid && login.touched
+      }"
+      type="text"
+      placeholder="Введите логин..."
+      formControlName="login"
+    />
+
+    <input
+      class="input input--fullwidth"
+      [ngClass]="{
+        'input--error': password.invalid && password.touched
+      }"
+      type="password"
+      placeholder="Введите пароль..."
+      formControlName="password"
+
+    />
   </ng-template>
 </form>
