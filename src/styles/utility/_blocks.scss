@@ -6,41 +6,37 @@
   padding: 0 15px;
 }
 
-@mixin inputGroupStyles {
+.input {
   max-width: 400px;
   width: 100%;
-  background: white;
-  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   padding: 7px 20px;
-  background: $color-gray-opacity;
-}
+  transition: all 300ms;
+  background: white;
 
-@mixin inputStyles {
   font-size: $fs-md;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.15);
 
-  &::placeholder {
-    color: $color-gray-800;
+  &--color {
+    &--gray {
+      background: $color-gray-opacity;
+
+      &:focus {
+        border-color: $color-gray;
+      }
+
+      &::placeholder {
+        color: $color-gray-800;
+      }
+
+    }
   }
-}
 
-.input {
-  @include inputGroupStyles;
-  @include inputStyles;
-}
-
-.input-group {
-  @include inputGroupStyles;
-
-  display: inline-flex;
-  justify-content: space-between;
-  gap: 5px;
-
-  input {
-    @include inputStyles;
+  &--fullwidth {
     width: 100%;
+    max-width: unset;
   }
 }
 
@@ -65,6 +61,15 @@
   }
 }
 
+@mixin buttonGhost($color, $hover-bg-color) {
+  color: $color;
+  background: transparent;
+
+  &:hover {
+    background: $hover-bg-color;
+  }
+}
+
 .btn {
   cursor: pointer;
   border: none;
@@ -73,6 +78,8 @@
   border-radius: 10px;
 
   &--fill {
+    @include buttonFilled($color-blue-400, $color-blue-600);
+
     &--green {
       @include buttonFilled($color-green-400, $color-green-800);
     }
@@ -87,6 +94,8 @@
   }
 
   &--outline {
+    @include buttonOutlined($color-blue-400);
+
     &--green {
       @include buttonOutlined($color-green-400);
     }
@@ -115,5 +124,26 @@
       padding: 7px 15px;
       font-size: $fs-sm;
     }
+  }
+
+  &--ghost {
+    @include buttonGhost($color-blue-400, $color-blue-200-opacity);
+
+    &--green {
+      @include buttonGhost($color-green-600, $color-green-200);
+    }
+
+    &--yellow {
+      @include buttonGhost($color-yellow-600, $color-yellow-200);
+    }
+
+    &--blue {
+      @include buttonGhost($color-blue-400, $color-blue-200-opacity);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    cursor: default;
   }
 }

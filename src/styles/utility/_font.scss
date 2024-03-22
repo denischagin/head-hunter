@@ -136,4 +136,10 @@
   color: $color-blue-200;
 }
 
+.text-align {
+  &--center {
+    text-align: center;
+  }
+}
+
 // colors end

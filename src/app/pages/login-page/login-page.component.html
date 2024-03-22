@@ -1,0 +1,19 @@
+<form action="" class="login">
+  <app-auth-form
+    formTitle="Авторизоваться"
+    [buttonSubmit]="buttonSubmit"
+    [inputs]="loginInputs"
+  />
+
+  <ng-template #buttonSubmit>
+    <button class="btn btn--size--md btn--fill">Войти</button>
+    <a class="clr-blue-600" routerLink="/register">
+      Ещё нет аккаунта?
+    </a>
+  </ng-template>
+
+  <ng-template #loginInputs>
+    <input class="input input--fullwidth" type="text" placeholder="Введите логин..."/>
+    <input class="input input--fullwidth" type="text" placeholder="Введите пароль..."/>
+  </ng-template>
+</form>
