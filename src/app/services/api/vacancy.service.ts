@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Vacancy} from "../../types/vacancy";
 import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
-import {API_URL} from "../../constants/api";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class VacancyService {
 
   getVacancies() {
     return this.http
-      .get<Vacancy[]>(`${API_URL}/vacancies`)
+      .get<Vacancy[]>(`vacancies`)
       .pipe(
         tap(vacancies => {
           this.vacancies$.next(vacancies)

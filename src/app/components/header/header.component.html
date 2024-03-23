@@ -4,23 +4,14 @@
 
     <nav class="header__menu">
       <ul>
-        <li>
+        <li *ngFor="let link of headerLinks">
           <a
-            routerLink="/login"
+            [routerLink]="link.link"
             class=" header__link"
             routerLinkActive="header__link--active"
+            [routerLinkActiveOptions]="{exact: true}"
           >
-            Войти
-          </a>
-        </li>
-
-        <li>
-          <a
-            routerLink="/register"
-            class="btn btn--size--md btn--ghost header__link"
-            routerLinkActive="header__link--active"
-          >
-            Зарегистрироваться
+            {{ link.title }}
           </a>
         </li>
       </ul>

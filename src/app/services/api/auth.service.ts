@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {AuthResponse, LoginCredentials, RefreshCredentials} from "../../types/auth";
 import {ViewerService} from "../store/viewer.service";
 import {Observable, tap} from "rxjs";
-import {API_URL} from "../../constants/api";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class AuthService {
 
   public login(credentials: LoginCredentials): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${API_URL}/login`, credentials)
+      .post<AuthResponse>(`login`, credentials)
       .pipe(tap(response =>
         this.viewerService.authenticate(response)
       ))
@@ -25,7 +24,7 @@ export class AuthService {
 
   public register(credentials: LoginCredentials): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${API_URL}/register`, credentials)
+      .post<AuthResponse>(`register`, credentials)
       .pipe(tap(response =>
         this.viewerService.authenticate(response)
       ))
@@ -33,7 +32,7 @@ export class AuthService {
 
   public refresh(credentials: RefreshCredentials): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${API_URL}/refresh`, credentials)
+      .post<AuthResponse>(`refresh`, credentials)
       .pipe(tap(response =>
         this.viewerService.authenticate(response)
       ))

@@ -31,9 +31,12 @@ export class VacancyListComponent implements OnInit {
     this.vacancyService
       .getVacancies()
       .pipe(
-        tap(_ => this.loaderService.hideLoader())
+        tap(_ => this.loaderService.hideLoader()),
       )
-      .subscribe(vacancies => this.vacancies = vacancies)
+      .subscribe({
+        next: vacancies => this.vacancies = vacancies,
+        error: _ => this.loaderService.hideLoader()
+      })
   }
 }
 
